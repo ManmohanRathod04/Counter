@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter</title>
+
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-image: linear-gradient(to right top, #051937, #004d7a, #008793, #00bf72, #a8eb12);
+        }
+
+        .box {
+            width: 30%;
+            height: 70vh;
+            border-radius: 10px;
+            box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+        }
+
+        .counter {
+            width: 100%;
+            height: 42vh;
+            font-size: 12rem;
+            text-align: center;
+            padding-top: 11rem;
+            color: green;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            background-color: #fff;
+        }
+
+        .btn {
+            text-align: center;
+            border-bottom-right-radius: 10px;
+            border-bottom-left-radius: 10px;
+            width: 100%;
+            height: 10vh;
+            background-color: #fff;
+
+        }
+
+        .btn1,
+        .btn2,
+        .btn3 {
+            width: 10rem;
+            height: 2.8rem;
+            margin-top: 1.5rem;
+            background-color: blueviolet;
+            color: #fff;
+            border: none;
+            font-size: 1.7rem;
+            border-radius: 10px;
+        }
+
+        .btn1:hover {
+            background-color: red;
+            color: #fff;
+            cursor: pointer;
+        }
+
+
+        .btn2:hover {
+            background-color: red;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .btn3:hover {
+            background-color: red;
+            color: #fff;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box">
+        <div class="counter">0
+        </div>
+
+        <div class="btn">
+            <button class="btn1" type="submit">Decrease</button>
+            <button class="btn2" type="submit">Reset</button>
+            <button class="btn3" type="submit">Increase</button>
+        </div>
+    </div>
+
+    <script>
+
+        const button = document.querySelector(".btn1")
+        const button2 = document.querySelector(".btn2");
+        const button3 = document.querySelector(".btn3");
+
+        let show = document.querySelector(".counter");
+
+        let number = 0;
+
+
+
+        function Decrease() {
+            number = number - 1;
+            show.innerHTML = number;
+
+            if (number < 0) {
+                show.style.color = "red";
+            }
+
+            if (number < -10) {
+                show.innerHTML = "Sorry!";
+                show.style.backgroundColor = "red";
+                show.style.color = "white";
+
+                setTimeout(() => {
+                    show.style.backgroundColor = "white";
+                    show.style.color = "green";
+                    Reset();
+
+                }, 2000)
+            }
+
+        }
+
+
+        function Reset() {
+            number = 0;
+            show.innerHTML = number;
+
+            setInterval(() => {
+                show.style.color = "green";
+
+            }, 2000)
+        }
+
+        function Increase() {
+            number = number + 1;
+            show.innerHTML = number;
+            if (number > 0) {
+                show.style.color = "blue";
+            }
+
+            if (number > 10) {
+                show.innerHTML = "Sorry!";
+                show.style.backgroundColor = "red";
+                show.style.color = "white";
+
+                setTimeout(() => {
+                    show.style.backgroundColor = "white";
+                    show.style.color = "green";
+                    Reset();
+                }, 2000)
+            }
+
+        }
+
+        button.addEventListener('click', Decrease);
+        button2.addEventListener('click', Reset);
+        button3.addEventListener('click', Increase);
+
+
+
+
+    </script>
+
+</body>
+
+</html>
